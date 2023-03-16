@@ -23,15 +23,15 @@ services:
     condition: service_healthy
   stdin_open: true
   tty: true
- node2:
-  build: .
-  container_name: nodejs2
-  ports:
-   - "81:8080"
-  volumes:
-   - ./:/usr/src/app
-  depends_on:
-   mysql1: 
-    condition: service_healthy
-  stdin_open: true
-  tty: true
+#  node2:
+#   build: .
+#   container_name: nodejs2
+#   ports:
+#    - "81:8080"
+#   volumes:
+#    - ./:/usr/src/app
+#   depends_on:
+#    mysql1: 
+#     condition: service_healthy
+#   stdin_open: true
+#   tty: true
