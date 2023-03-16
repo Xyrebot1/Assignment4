@@ -8,9 +8,11 @@ import {GetPosts} from './GetPosts';
 import {AddPosts} from './AddPosts';
 
 function App() {   
-  const [createDB, getPosts, setPosts] = useState([]);
-  if(getPosts.length <1) {fetch('http://localhost:8080/getPosts').then(response => response.json()).then(response => setPosts(response))};
-
+  const [getPosts, setPosts] = useState([]);
+  if(getPosts.length <1) {fetch('http://localhost:8080/getPosts')
+  .then(response => response.json())
+  .then(response => setPosts(response))};
+  
   return (
     <div className="App">
       <header className="App-header">  
@@ -21,7 +23,7 @@ function App() {
         <Link to="/addPosts">  <button> Add Posts </button>   </Link>
          <Routes>
           <Route exact path='/' element={<Landing/>} />
-          <Route path="/createDatabase" element={<CreateDatabase set = {createDB}/>} />
+          <Route path="/createDatabase" element={<CreateDatabase/>} />
           <Route path="/getPosts" element={<GetPosts get = {getPosts}/>} />
           <Route path="/addPosts" element={ <AddPosts set = {setPosts} /> } />
           </Routes>

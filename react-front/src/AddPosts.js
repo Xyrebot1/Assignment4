@@ -14,7 +14,7 @@ export const AddPosts = ({set}) => {
         onChange={e => setData(e.target.value)} />
         </div>
         <button onClick={(e) => {
-            fetch('http://localhost:8080/addPost', {method: 'POST', body: `topic=${getTopic}&data=${getData}`,
+            fetch('http://localhost:8080/addPost', {method: 'POST', body: `topic=${getTopic}&data=${getData}`, 
             headers: {'Content-type': 'application/x-www-form-urlencoded'}})
             .then(fetch('http://localhost:8080/getPosts')
             .then(response => response.json())

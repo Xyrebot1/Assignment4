@@ -6,7 +6,7 @@ services:
   volumes:
    - db:/var/lib/mysql
   environment:
-   MYSQL_ROOT_PASSWORD: admin
+    MYSQL_ROOT_PASSWORD: admin
   healthcheck:
    test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-padmin"]
    timeout: 20s # Timeout for each health checking.
@@ -15,7 +15,7 @@ services:
   build: .
   container_name: nodejs1
   ports:
-   - "80:8080"
+   - "8080:8080"
   volumes:
    - ./:/usr/src/app
   depends_on:
@@ -23,15 +23,18 @@ services:
     condition: service_healthy
   stdin_open: true
   tty: true
-#  node2:
-#   build: .
-#   container_name: nodejs2
-#   ports:
-#    - "81:8080"
-#   volumes:
-#    - ./:/usr/src/app
-#   depends_on:
-#    mysql1: 
-#     condition: service_healthy
-#   stdin_open: true
-#   tty: true
+ node2:
+  build: .
+  container_name: nodejs2
+  ports:
+   - "3000:3000"
+  volumes:
+   - ./:/usr/src/app
+  depends_on:
+   mysql1: 
+    condition: service_healthy
+  stdin_open: true
+  tty: true
+volumes: 
+  db:
+     driver: local   

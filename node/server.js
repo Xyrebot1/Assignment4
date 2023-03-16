@@ -43,10 +43,10 @@ app.post('/init', (req, res) => {
         if (error) console.log(error);
     });
 
-    connection.query(`Truncate posts`, function(error,results) {
+    connection.query(`TRUNCATE TABLE posts`, function(error,results) {
         if (error) console.log(error);
     })
-    
+
     res.send('Database and Table created!');
 });
 
@@ -65,7 +65,7 @@ app.get('/getPosts', (req, res) => {
     const sqlQuery = 'SELECT * FROM posts';
     connection.query(sqlQuery, function (error, results) {
         if (error) console.log(error);
-        res.json({ 'allPosts': results});
+        res.json({results});
     });
 });
 
