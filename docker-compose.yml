@@ -4,7 +4,7 @@ services:
   image: mysql:5.7
   container_name: db1
   volumes:
-   - dbfiles:/var/lib/mysql
+   - db:/var/lib/mysql
   environment:
     MYSQL_ROOT_PASSWORD: admin
   healthcheck:
